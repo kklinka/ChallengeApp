@@ -22,10 +22,6 @@ employee3.AddScore(8);
 employee3.AddScore(6);
 employee3.AddScore(7);
 
-var result1 = employee1.Result;
-var result2 = employee2.Result;
-var result3 = employee3.Result;
-
 List<Employee> employees = new List<Employee>()
 {
     employee1, employee2, employee3
