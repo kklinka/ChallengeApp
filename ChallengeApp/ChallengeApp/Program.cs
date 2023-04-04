@@ -1,71 +1,49 @@
-﻿int number = 4594;
+﻿using ChallengeApp;
 
-string numberInString = number.ToString();
+Employee employee1 = new Employee("Kasia", "Kowalska", 43);
+Employee employee2 = new Employee("Bartek", "Nowak", 44);
+Employee employee3 = new Employee("Michał", "Miozga", 53);
 
-char[] letters = numberInString.ToArray();
+employee1.AddScore(5);
+employee1.AddScore(9);
+employee1.AddScore(2);
+employee1.AddScore(3);
+employee1.AddScore(4);
 
-int counter1 = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counter5 = 0;
-int counter6 = 0;
-int counter7 = 0;
-int counter8 = 0;
-int counter9 = 0;
-int counter0 = 0;
+employee2.AddScore(3);
+employee2.AddScore(4);
+employee2.AddScore(5);
+employee2.AddScore(4);
+employee2.AddScore(7);
 
-foreach (char letter in letters)
+employee3.AddScore(4);
+employee3.AddScore(7);
+employee3.AddScore(8);
+employee3.AddScore(6);
+employee3.AddScore(7);
+
+var result1 = employee1.Result;
+var result2 = employee2.Result;
+var result3 = employee3.Result;
+
+List<Employee> employees = new List<Employee>()
 {
-    if (letter == '0')
+    employee1, employee2, employee3
+};
+
+int maxResult = -1;
+Employee employeeWithMaxResult = null;
+
+foreach (var employee in employees)
+{
+   if (employee.Result > maxResult)
     {
-        counter0++;
-    }
-    else if (letter =='1') 
-    { 
-        counter1++;
-    }
-    else if (letter == '2')
-    {
-        counter2++;
-    }
-    else if (letter == '3')
-    {
-        counter3++;
-    }
-    else if (letter == '4')
-    {
-        counter4++;
-    }
-    else if (letter == '5')
-    {
-        counter5++;
-    }
-    else if (letter == '6')
-    {
-        counter6++;
-    }
-    else if (letter == '7')
-    {
-        counter7++;
-    }
-    else if (letter == '8')
-    {
-        counter8++;
-    }
-    else if (letter == '9')
-    {
-        counter9++; 
+        employeeWithMaxResult = employee;
+        maxResult = employee.Result;
     }
 }
 
-Console.WriteLine("Cyfry 0 jest " + counter0);
-Console.WriteLine("Cyfry 1 jest " + counter1);
-Console.WriteLine("Cyfry 2 jest " + counter2);
-Console.WriteLine("Cyfry 3 jest " + counter3);
-Console.WriteLine("Cyfry 4 jest " + counter4);
-Console.WriteLine("Cyfry 5 jest " + counter5);
-Console.WriteLine("Cyfry 6 jest " + counter6);
-Console.WriteLine("Cyfry 7 jest " + counter7);
-Console.WriteLine("Cyfry 8 jest " + counter8);
-Console.WriteLine("Cyfry 9 jest " + counter9);
+Console.WriteLine("Najwyższą ocenę uzyskał:");
+Console.WriteLine(employeeWithMaxResult.Name+" "+employeeWithMaxResult.Surname);
+Console.WriteLine("Lat: "+employeeWithMaxResult.Age);
+Console.WriteLine("Ocena: "+ maxResult);
