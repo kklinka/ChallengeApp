@@ -8,9 +8,9 @@ namespace ChallengeApp.test
         {
             //arrange
             var employee = new Employee("Kasia", "Kowalska", 43);
-            employee.AddScore(5);
-            employee.AddScore(7);
-            employee.AddScore(-2);
+            employee.AddGrade(5);
+            employee.AddGrade(7);
+            employee.AddGrade(-2);
 
             //act
             var result = employee.Result;
