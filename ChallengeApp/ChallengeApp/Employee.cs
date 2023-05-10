@@ -12,7 +12,8 @@
         public string Name { get; private set; }
         public string Surname { get; private set; }
         public int Age { get; private set; }
-       
+        public object Result { get; set; }
+
         public void AddGrade(float grade)
         {
             this.grades.Add(grade);
