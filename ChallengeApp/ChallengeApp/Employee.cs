@@ -16,24 +16,57 @@
 
         public void AddGrade(float grade)
         {
-            this.grades.Add(grade);
+            if (grade >= 0 && grade <= 100)
+            { 
+                this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("invalid grade value");
+            }
         }
-         public Statistics GetStatisties()
+        public void AddGrade(double grade)
         {
-            var statisties = new Statistics();
-            statisties.Average= 0;
-            statisties.Max= float.MinValue;
-            statisties.Min= float.MaxValue;
+            float gradeAsFloat = (float)grade;
+            this.AddGrade(gradeAsFloat);
+        }
+        public void AddGrade(long grade)
+        {
+            float gradeAsFloat = (float)grade;
+            this.AddGrade(gradeAsFloat);
+        }
+        public void AddGrade(int grade)
+        {
+            float gradeAsFloat = (float)grade;
+            this.AddGrade(gradeAsFloat);
+        }
+        public void AddGrade(string grade)
+        { 
+            if (float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("String is not float");
+            }
+        }
+        public Statistics GetStatisties()
+        {
+            var statistics = new Statistics();
+            statistics.Average= 0;
+            statistics.Max= float.MinValue;
+            statistics.Min= float.MaxValue;
 
             foreach(var grade in this.grades)
             {
-                statisties.Max = Math.Max (statisties.Max, grade);  
-                statisties.Min = Math.Min (statisties.Min, grade);
-                statisties.Average += grade;
+                statistics.Max = Math.Max (statistics.Max, grade);  
+                statistics.Min = Math.Min (statistics.Min, grade);
+                statistics.Average += grade;
             }
 
-            statisties.Average /= this.grades.Count;    
-            return statisties;
+            statistics.Average /= this.grades.Count;    
+            return statistics;
         }
     }
 

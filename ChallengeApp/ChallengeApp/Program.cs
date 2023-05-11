@@ -4,7 +4,7 @@ using System;
 var employee1 = new Employee("Kasia", "Kowalska", 43);
 var employee2 = new Employee("Bartek", "Nowak", 44);
 employee1.AddGrade(2);
-employee1.AddGrade(2);
+employee1.AddGrade(3);
 employee1.AddGrade(5);
 
 employee2.AddGrade(6);
