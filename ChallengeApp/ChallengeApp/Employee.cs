@@ -27,7 +27,7 @@ namespace ChallengeApp
             }
             else
             {
-                Console.WriteLine("invalid grade value");
+                throw new Exception("Float is wrong");
             }
         }
         public void AddGrade(double grade)
@@ -53,7 +53,7 @@ namespace ChallengeApp
             }
             else
             {
-                Console.WriteLine("String is not float");
+                throw new Exception ("String is not float");
             }
         }
         public void AddGrade(char grade)
@@ -76,8 +76,7 @@ namespace ChallengeApp
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Wrong Letter");
-                    break;
+                    throw new Exception ("Wrong Letter");
             }
         }
         public Statistics GetStatisties()
@@ -113,7 +112,6 @@ namespace ChallengeApp
                     statistics.AverageLetter = 'E';
                     break;
             }
-
             return statistics;
         }
     }
