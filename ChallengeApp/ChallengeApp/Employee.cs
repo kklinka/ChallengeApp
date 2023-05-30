@@ -1,23 +1,17 @@
-﻿using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
-        public Employee() 
-        { 
-        }
-        public Employee(string name, string surname, int age)
+
+        public Employee ()
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
         }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public int Age { get; private set; }
+        public Employee(string name, string surname, string sex, int age)
+            :base (name,surname,sex,age)
+        {
+        }
+
         public object Result { get; set; }
         public void AddGrade(float grade)
         {
