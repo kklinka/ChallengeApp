@@ -19,7 +19,7 @@ namespace ChallengeApp.test
         }
         public void WhenGetStatistics_ShouldReturnCorrectMin()
         {
-            var employee = new Employee("Kasia", "Kowalska", 43);
+            var employee = new Employee("Kasia", "Kowalska","K", 43);
             employee.AddGrade(2);
             employee.AddGrade(3);
             employee.AddGrade(5); ;
@@ -30,7 +30,7 @@ namespace ChallengeApp.test
         }
         public void WhenGetStatistics_ShouldReturnCorrectAverage()
         {
-            var employee = new Employee("Kasia", "Kowalska", 43);
+            var employee = new Employee("Kasia", "Kowalska","K", 43);
             employee.AddGrade(2);
             employee.AddGrade(3);
             employee.AddGrade(5); ;
