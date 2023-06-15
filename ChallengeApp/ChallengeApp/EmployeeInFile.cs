@@ -4,23 +4,30 @@
     {
         private const string fileName = "grades.txt";
 
+        public override event GradeAddedDelegate GradeAdded;
+
         public EmployeeInFile(string name, string surname, string sex, int age) 
             : base(name, surname, sex, age)
         {
         }
-
+       
         public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
-               using (var writer = File.AppendText(fileName))
-               {
+                using (var writer = File.AppendText(fileName))
+                {
                     writer.WriteLine(grade);
-               }
+
+                    if (GradeAdded != null)
+                    {
+                        GradeAdded(this, new EventArgs());
+                    }
+                } 
             }
             else
             {
-                throw new Exception("Float is wrong");
+                throw new Exception("Invalid grade value");
             }
         }
 
@@ -54,7 +61,29 @@
             }
         }
 
-
+        public override void AddGrade(char grade)
+        {
+            switch (grade)
+            {
+                case 'A':
+                    this.AddGrade(100);
+                    break;
+                case 'B':
+                    this.AddGrade(80);
+                    break;
+                case 'C':
+                    this.AddGrade(60);
+                    break;
+                case 'D':
+                    this.AddGrade(40);
+                    break;
+                case 'E':
+                    this.AddGrade(20);
+                    break;
+                default:
+                    throw new Exception("Wrong Letter");
+            }
+        }
         public override Statistics GetStatisties()
         {
             var gradesFromFile = this.ReadGradesFromFile();
@@ -113,11 +142,6 @@
                     break;
             }
             return statistics;
-        }
-
-        public override void AddGrade(char grade)
-        {
-            throw new NotImplementedException();
         }
     }
 }

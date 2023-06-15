@@ -9,15 +9,22 @@
         {
         }
 
+        public override event GradeAddedDelegate GradeAdded;
+
         public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+                
+                if(GradeAdded != null)
+                {
+                    GradeAdded (this, new EventArgs());
+                }
             }
             else
             {
-                throw new Exception("Float is wrong");
+                throw new Exception("Invalid grade value");
             }
         }
     
@@ -56,19 +63,19 @@
             switch (grade)
             {
                 case 'A':
-                    this.grades.Add(100);
+                    this.AddGrade(100);
                     break;
                 case 'B':
-                    this.grades.Add(80);
+                    this.AddGrade(80);
                     break;
                 case 'C':
-                    this.grades.Add(60);
+                    this.AddGrade(60);
                     break;
                 case 'D':
-                    this.grades.Add(40);
+                    this.AddGrade(40);
                     break;
                 case 'E':
-                    this.grades.Add(20);
+                    this.AddGrade(20);
                     break;
                 default:
                     throw new Exception("Wrong Letter");
